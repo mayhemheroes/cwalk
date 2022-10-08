@@ -1,0 +1,6 @@
+project: cwalk
+target: api-fuzz
+
+cmds:
+  - cmd: /fuzz_lib
+    libfuzzer: true
