@@ -40,15 +40,25 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     std::string p10 = fdp.ConsumeRandomLengthString();
     cwk_path_get_intersection(p9.c_str(), p10.c_str());
 
-    // Segment Iteration
+    // Style Test
     std::string p11 = fdp.ConsumeRandomLengthString();
+    cwk_path_guess_style(p9.c_str());
+
+    // Segment Iteration
+    std::string p12 = fdp.ConsumeRandomLengthString();
     struct cwk_segment segment;
-    cwk_path_get_first_segment(p11.c_str(), &segment);
+    cwk_path_get_first_segment(p12.c_str(), &segment);
+
     do {
         noop;
     } while (cwk_path_get_next_segment(&segment));
-  delete join_buff;
-  delete norm_buff;
+
+    // Extension Test
+    std::string p13 = fdp.ConsumeRandomLengthString();
+    cwk_path_has_extension(p13.c_str());
+
+  free(join_buff);
+  free(norm_buff);
 
   return 0;
 }

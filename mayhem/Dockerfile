@@ -10,7 +10,7 @@ ADD . /cwalk
 WORKDIR /cwalk/mayhem
 
 ## Build
-RUN clang++ -fsanitize=fuzzer fuzz_lib.cpp ../src/cwalk.c -I ../include -o fuzz_lib
+RUN clang++ -fsanitize=fuzzer,address,undefined fuzz_lib.cpp ../src/cwalk.c -I ../include -o fuzz_lib
 
 # Package Stage
 FROM --platform=linux/amd64 ubuntu:22.04
