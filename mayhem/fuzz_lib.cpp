@@ -1,4 +1,4 @@
-#include "FuzzedDataProvider.h"
+#include <fuzzer/FuzzedDataProvider.h>
 #include "cwalk.h"
 
 #define noop
